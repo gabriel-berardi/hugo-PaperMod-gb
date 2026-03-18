@@ -27,15 +27,22 @@
     margin-inline-start: auto;
 }
 
-
 .social-icons a {
     display: inline-flex;
     padding: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
 }
 
 .social-icons a svg {
     height: 26px;
     width: 26px;
+    transition: filter 0.3s ease; /* Smooth transition for filter */
+}
+
+/* Glowing Effect on Hover for Social Icons */
+.social-icons a:hover svg {
+    filter: drop-shadow(0 0 5px #00c4ff) drop-shadow(0 0 10px #00c4ff);
+    transform: scale(1.1); /* Optional: Scale up on hover for a more dramatic effect */
 }
 
 code {

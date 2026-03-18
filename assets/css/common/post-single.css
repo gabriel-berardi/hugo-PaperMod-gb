@@ -16,7 +16,7 @@
 .post-meta,
 .breadcrumbs {
     color: var(--secondary);
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -275,7 +275,7 @@
 
 .toc .details {
     display: inline;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .toc .inner {
@@ -321,7 +321,8 @@
     display: block;
     padding: 0 14px;
     color: var(--secondary);
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 34px;
     background: var(--code-bg);
 }
@@ -404,4 +405,16 @@ h1>a>svg {
 img.in-text {
     display: inline;
     margin: auto;
+}
+
+/* Remove underline and potential box shadow from footnote links */
+.post-content .footnote-ref,
+.post-content .footnote-ref:visited,
+.post-content .footnote-ref:hover,
+.post-content .footnote-ref:active {
+    font-weight: 600;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
 }

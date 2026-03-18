@@ -8,7 +8,7 @@
 <header class="page-header">
   {{- partial "breadcrumbs.html" . }}
   <h1>
-    {{ .Title }}
+    Blog <!-- {{ .Title }} -->
     {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
     {{- with .OutputFormats.Get "rss" }}
     <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
@@ -38,6 +38,30 @@
 </div>
 {{- end }}
 
+{{/* Add the tags above list of blog posts */}}
+
+<h2>Categories</h2>
+<br/>
+<ul class="terms-tags">
+  <li>
+    <a href="/blog/" class="{{ if eq .RelPermalink "/blog/" }}active{{ end }}">> All<sup><strong><sup></sup></strong></sup> </a>
+  </li>
+  <li>
+    <a href="/categories/data/" class="{{ if eq .RelPermalink "/categories/data/" }}active{{ end }}">> Data<sup><strong><sup></sup></strong></sup> </a>
+  </li>
+  <li>
+    <a href="/categories/insurance/" class="{{ if eq .RelPermalink "/categories/insurance/" }}active{{ end }}">> Insurance<sup><strong><sup></sup></strong></sup> </a>
+  </li>
+  <li>
+    <a href="/categories/bitcoin/" class="{{ if eq .RelPermalink "/categories/bitcoin/" }}active{{ end }}">> Bitcoin<sup><strong><sup></sup></strong></sup> </a>
+  </li> 
+</ul>
+
+
+<br/>
+<h2>Articles</h2>
+<br/>
+
 {{- $pages := union .RegularPages .Sections }}
 
 {{- if .IsHome }}
@@ -64,6 +88,11 @@
 {{- end }}
 
 <article class="{{ $class }}">
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
   <header class="entry-header">
@@ -83,11 +112,6 @@
   <div class="entry-content">
     <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
   </div>
-  {{- end }}
-  {{- if not (.Param "hideMeta") }}
-  <footer class="entry-footer">
-    {{- partial "post_meta.html" . -}}
-  </footer>
   {{- end }}
   <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
 </article>
