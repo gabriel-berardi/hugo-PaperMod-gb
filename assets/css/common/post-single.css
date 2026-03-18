@@ -16,14 +16,10 @@
 .post-meta,
 .breadcrumbs {
     color: var(--secondary);
-<<<<<<< HEAD
-    font-size: 14px;
-=======
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .breadcrumbs {
->>>>>>> 10d3dcc0e05cee0aaca58a1305a9d824b2cf9a2a
     display: flex;
     flex-wrap: wrap;
     align-items: center;
